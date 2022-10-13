@@ -1,0 +1,19 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine(), nStr = "", result = "";
+        char c;
+        
+        for(int i = 0; i < input.length(); i++) {
+            c = input.charAt(i);
+            nStr = c + nStr;
+        }
+        if(input.equalsIgnoreCase(nStr)) result = "Yes";
+        else result = "No";
+        System.out.print(result);
+    }
+}
