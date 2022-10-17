@@ -1,0 +1,57 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+public class Solution {
+    
+    public static void main(String[] args) throws IOException {
+        List<List<Integer>> arr = new ArrayList<>();
+        try (var reader = new BufferedReader(
+            new InputStreamReader(System.in))) {
+            for (int i = 0; i < 6; i++) {
+                arr.add(saveInputLineToList(reader));
+            }
+        }
+        System.out.println(maxHourglassSum(arr));
+    }
+    
+    private static List<Integer> saveInputLineToList(
+            BufferedReader reader) throws IOException {
+        return Stream.of(
+            reader.readLine()
+                .replaceAll("\\s+$", "")
+                .split(" "))
+                .map(Integer::parseInt)
+                .collect(toList());
+    }
+    
+    private static int maxHourglassSum(List<List<Integer>> arr) {
+        int maxSum = Integer.MIN_VALUE;        
+        for (int i = 0; i < 6 - 2; i++) {
+            for (int j = 0; j < 6 - 2; j++) {
+                int topRowSum = 
+                    arr.get(i).get(j)
+                        + arr.get(i).get(j + 1)
+                        + arr.get(i).get(j + 2);
+                int middleRowSum = 
+                    arr.get(i + 1).get(j + 1);
+                int bottomRowSum = 
+                    arr.get(i + 2).get(j)
+                        + arr.get(i + 2).get(j + 1)
+                        + arr.get(i + 2).get(j + 2);
+                maxSum = Math.max(
+                    topRowSum + middleRowSum + bottomRowSum, maxSum);
+            }
+        }
+        return maxSum;
+    }
+}
