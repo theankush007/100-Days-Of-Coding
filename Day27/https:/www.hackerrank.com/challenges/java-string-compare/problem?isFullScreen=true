@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Solution {
+
+    public static String getSmallestAndLargest(String s, int k) {
+        String smallest = "";
+        String largest = "";
+        
+        // First, we settle default value to variable smallest to compare
+        // no need to do this with largest value, as it will be already
+        // too small to be overwritten by another value.
+        smallest = s.substring(0, k);
+        
+        // Now we start comparing and replacing values
+        for (int i = 0; i <= s.length() - k; i++){
+            
+            // logic is that if substring is smallest than smallest var
+            // then we save that value on smallest var
+            if (s.substring(i, i + k).compareTo(smallest) <= 0)
+                smallest = s.substring(i, i + k);
+                
+            // logic is that if substring is larger than larger var
+            // then we save that value on largest var
+            if (s.substring(i, i + k).compareTo(largest) >= 0)
+                largest = s.substring(i, i + k);
+        } 
+        return smallest + "\n" + largest;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.next();
+        int k = scan.nextInt();
+        scan.close();
+      
+        System.out.println(getSmallestAndLargest(s, k));
+    }
+}
