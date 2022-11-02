@@ -1,0 +1,20 @@
+import java.math.*;              //this program checks if the number you gave it is prime or not
+import java.util.Scanner;
+
+public class javaPrimalitytestWork {
+    public static void main(String[] args) {
+        
+        Scanner scan = new Scanner(System.in);    
+        String n = scan.nextLine();
+
+        BigInteger number = new BigInteger(n);     //BigInteger is just a class type for "number" like "Scanner scan"
+        
+        if (number.isProbablePrime(1)) {
+            System.out.println("prime");
+                } else {
+            System.out.println("not prime");
+                }
+
+        scan.close();
+    }
+    }
