@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+abstract class MyBook{ public void Read(){ return; } } class Book extends MyBook{ public void Title(){ return; } }
+
+public class Solution { public static void main(String args[]) { Scanner sc = new Scanner(System.in); String text= sc.nextLine();
+Book new_novel = new Book(); System.out.println("The title is: " + text);
+
+            // use this it will helpful
+
+ }
+}
